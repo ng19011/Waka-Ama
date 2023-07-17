@@ -1,0 +1,60 @@
+import csv
+import os 
+folder_path = 'WakaNats2017/'
+fold_path = 'WakaNats2018/'
+
+print("waka ama Final results")
+
+username = input("Enter Username")
+if username == "JohnSingh123":
+  print(".")
+while username != "JohnSingh123":
+  username = input("incorrect username please try again")
+
+password = input("Enter Password")
+if password == "Pauldeep145":
+  print(".")
+while password != "Pauldeep145":
+  password = input("incorrect password please try again")
+  
+#input allows the user to choose which file they would like to read 
+choose = input("Would you like to access the 2017 or 2018 Waka Ama results")
+if choose == "2017":
+  for file_name in os.listdir(folder_path):
+      if file_name.endswith(".csv") and "final" in file_name.lower():
+          file_path = os.path.join(folder_path, file_name)
+          print("Reading file:", file_path)
+  
+          #reads the csv finals that contain final in them for the wakanats 2017
+          try:
+              with open(file_path, 'r') as csv_file:
+                  csv_reader = csv.reader(csv_file)
+                  for line in csv_reader:
+                      print(line[6])
+          except Exception as e:
+              print("Error reading file:", file_path)
+              print("Error message:", str(e))
+if choose == "2018":
+  for file_name in os.listdir(fold_path):
+      if file_name.endswith(".csv") and "final" in file_name.lower():
+          file_path = os.path.join(fold_path, file_name)
+          print("Reading file:", file_path)
+  
+          #reads the csv finals that contain final in them for the wakanats 2018
+          try:
+              with open(file_path, 'r') as csv_file:
+                  csv_reader = csv.reader(csv_file)
+                  for line in csv_reader:
+                      print(line[0])
+          except Exception as e:
+              print("Error reading file:", file_path)
+              print("Error message:", str(e))
+
+  
+
+
+
+
+
+
+
